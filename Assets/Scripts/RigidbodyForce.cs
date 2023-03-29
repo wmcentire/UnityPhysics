@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class RigidbodyForce : MonoBehaviour
 {
 	[SerializeField] Vector3 force;
@@ -40,10 +41,12 @@ public class RigidbodyForce : MonoBehaviour
 			if (isRelative) 
 			{
 				// <relative force>
+				//transform.localPosition
 			}
 			else
 			{
 				// <force>
+				rb.AddForce(force,forceMode);
 			}
 		}
 
@@ -56,7 +59,8 @@ public class RigidbodyForce : MonoBehaviour
 			}
 			else
 			{
-				// <torquw>
+				// <torque>
+				rb.AddTorque(torque,torqueMode);
 			}
 		}
 
