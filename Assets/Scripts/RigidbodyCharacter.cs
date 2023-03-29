@@ -48,6 +48,7 @@ public class RigidbodyCharacter : MonoBehaviour
 		if (Input.GetButtonDown("Jump"))
 		{
 			// <jump force>	
+			rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
 		}
 	}
 
@@ -56,10 +57,14 @@ public class RigidbodyCharacter : MonoBehaviour
 		if (isRelative)
 		{
 			// <force / torque>
+			rb.AddRelativeForce(direction * speed,ForceMode.Force);
+			rb.AddRelativeTorque(rotate * turnRate);
 		}
 		else
 		{
 			// <force / torque>
+			rb.AddForce(direction * speed);
+			rb.AddTorque(rotate * turnRate);
 		}
 	}
 }
