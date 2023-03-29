@@ -42,6 +42,7 @@ public class RigidbodyForce : MonoBehaviour
 			{
 				// <relative force>
 				//transform.localPosition
+				rb.AddRelativeForce(force,forceMode);
 			}
 			else
 			{
@@ -56,6 +57,7 @@ public class RigidbodyForce : MonoBehaviour
 			if (isRelative)
 			{
 				// <relative torque>
+				rb.AddRelativeTorque(torque,torqueMode);
 			}
 			else
 			{
