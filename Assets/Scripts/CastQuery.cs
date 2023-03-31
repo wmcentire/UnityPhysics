@@ -35,9 +35,11 @@ public class CastQuery : MonoBehaviour
 		{
 			case CastType.RAY:
 				// <raycast all>
+				raycastHits = Physics.RaycastAll(ray, distance, layerMask);
 				break;
 			case CastType.SPHERE:
 				// <sphere cast all>
+				raycastHits = Physics.SphereCastAll(ray, radius, distance, layerMask);
 				break;
 			default:
 				break;
