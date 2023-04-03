@@ -25,21 +25,25 @@ using System.Collections.Generic;
         rb = GetComponent<Rigidbody>();
     }
     void Update()
-    {        // reset        if (Input.GetKeyDown(KeyCode.R))
+    {        
+        // reset        
+        if (Input.GetKeyDown(KeyCode.R))
         {
             transform.position = position;
             transform.rotation = rotation;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
-        // movement        direction = Vector3.zero;
+        // movement        
+        direction = Vector3.zero;
         direction.z = Input.GetAxis("Vertical");
 
         rotate = Vector3.zero;
         rotate.y = Input.GetAxis("Horizontal");
 
 
-        // jump        if (Input.GetButtonDown("Jump"))
+        // jump        
+        if (Input.GetButtonDown("Jump"))
         {
             rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
         }
