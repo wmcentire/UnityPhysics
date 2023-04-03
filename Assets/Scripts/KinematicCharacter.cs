@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class KinematicCharacter : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class KinematicCharacter : MonoBehaviour
 		// translation
 		Vector3 direction = Vector3.zero;
 		direction.z = Input.GetAxis("Vertical");
-		transform.position += direction * speed * Time.deltaTime;
+		transform.Translate(direction * speed * Time.deltaTime, isRelative ? Space.Self : Space.World);
+		//transform.position += transform.rotation * direction * speed * Time.deltaTime;
 		// <translate>
 
 		// rotation

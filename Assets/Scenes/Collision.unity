@@ -985,7 +985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnRate: 180
-  isRelative: 0
+  isRelative: 1
 --- !u!1001 &7786068587919329276
 PrefabInstance:
   m_ObjectHideFlags: 0
