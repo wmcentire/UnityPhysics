@@ -1661,6 +1661,7 @@ MonoBehaviour:
   speed: 5
   turnRate: 20
   jumpHeight: 2
+  doubleJumpHeight: 1
   hitForce: 1
   fallRateMultiplier: 1.81
   groundTransform: {fileID: 2095098869}

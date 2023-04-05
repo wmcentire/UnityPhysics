@@ -40,7 +40,7 @@ public class ControllerCharacter : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 velocity.y += Mathf.Sqrt(jumpHeight * -2 * Physics.gravity.y);
-                StartCoroutine(DoubleJump(2.0f));
+                StartCoroutine(DoubleJump());
             }
         }
         // adjust gravity for jump
@@ -81,7 +81,7 @@ public class ControllerCharacter : MonoBehaviour
     }
 
     //corouting
-    IEnumerator DoubleJump(float timer)
+    IEnumerator DoubleJump()
     {
         // wait a little after the jump to allow a double jump
         yield return new WaitForSeconds(0.01f);
