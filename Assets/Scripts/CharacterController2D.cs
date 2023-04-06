@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
+    [SerializeField] Animator animator;
     [SerializeField] float speed;
     [SerializeField] float turnRate;
     [SerializeField] float jumpHeight;
@@ -16,9 +17,12 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] LayerMask groundLayerMask;
     Vector2 velocity = Vector2.zero;
     Rigidbody2D rb;
+    [SerializeField]SpriteRenderer spriteRenderer;
+    bool faceRight = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //spriteRenderer= GetComponent<SpriteRenderer>();
     }
     void Update()
     {
@@ -38,24 +42,30 @@ public class CharacterController2D : MonoBehaviour
             {
                 velocity.y += Mathf.Sqrt(jumpHeight * -2 * Physics.gravity.y);
                 StartCoroutine(DoubleJump());
+                animator.SetTrigger("Jump");
             }
         }
         // adjust gravity for jump
         float gravityMultiplier = 1;
         if (!onGround && velocity.y < 0) gravityMultiplier = fallRateMultiplier;
 
-        velocity.y += Physics.gravity.y * gravityMultiplier * Time.deltaTime;
+        velocity.y += Physics.gravity.y * gravityMultiplier;
 
         // move character
 
         rb.velocity = velocity;
 
-        // rotate character to face direction of movement (velocity)
-        Vector3 face = new Vector3(velocity.x, 0);
-        if (face.magnitude > 0)
+        // face character direction of movement (velocity)
+        if(velocity.x > 0 && !faceRight)
         {
-
+            flip();
+        }else if(velocity.x < 0 && faceRight)
+        {
+            flip();
         }
+
+        // animator
+        animator.SetFloat("Speed", Mathf.Abs(velocity.x));
     }
     
 
@@ -75,5 +85,11 @@ public class CharacterController2D : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    private void flip()
+    {
+        faceRight = !faceRight;
+        spriteRenderer.flipX = !faceRight;
     }
 }
