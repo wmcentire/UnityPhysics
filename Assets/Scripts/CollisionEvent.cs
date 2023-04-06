@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CollisionEvent : MonoBehaviour
 {
@@ -28,7 +29,13 @@ public class CollisionEvent : MonoBehaviour
 	{
 		Vector3 position = other.transform.position;
 		DrawMarker(position, size, Color.red, 2);
-	}
+		//spawning jargon will remove later
+        Spawner spawner = GetComponent<Spawner>();
+        if (spawner != null)
+        {
+            spawner.spawn();
+        }
+    }
 
 	private void OnTriggerExit(Collider other)
 	{

@@ -5,11 +5,12 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
-
+    [SerializeField] private Transform target;
+    private Component collider;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -17,7 +18,12 @@ public class Spawner : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.S))
         {
-            Instantiate(prefab, transform.position, transform.rotation);
+            Instantiate(prefab, target.transform.position, target.transform.rotation);
         }
+    }
+
+    public void spawn()
+    {
+        Instantiate(prefab, target.transform.position, target.transform.rotation);
     }
 }
