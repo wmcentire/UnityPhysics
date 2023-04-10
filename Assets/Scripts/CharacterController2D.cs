@@ -15,6 +15,7 @@ public class CharacterController2D : MonoBehaviour
     [Header("Ground")]
     [SerializeField] Transform groundTransform;
     [SerializeField] LayerMask groundLayerMask;
+    [SerializeField] float groundRadius;
     Vector2 velocity = Vector2.zero;
     Rigidbody2D rb;
     [SerializeField]SpriteRenderer spriteRenderer;
@@ -27,7 +28,7 @@ public class CharacterController2D : MonoBehaviour
     void Update()
     {
         // check if the character is on the ground
-        bool onGround = Physics2D.OverlapCircle(groundTransform.position, 0.2f, groundLayerMask) != null;
+        bool onGround = Physics2D.OverlapCircle(groundTransform.position, groundRadius, groundLayerMask) != null;
         // get direction input
         Vector2 direction = Vector2.zero;
         direction.x = Input.GetAxis("Horizontal");
@@ -66,6 +67,7 @@ public class CharacterController2D : MonoBehaviour
 
         // animator
         animator.SetFloat("Speed", Mathf.Abs(velocity.x));
+        animator.SetBool("Fall", !onGround && velocity.y < -0.1f);
     }
     
 
@@ -85,6 +87,12 @@ public class CharacterController2D : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(groundTransform.position, groundRadius);
     }
 
     private void flip()
