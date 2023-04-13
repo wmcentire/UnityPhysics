@@ -68,7 +68,7 @@ public class AIController2D : MonoBehaviour, IDamagable
                 {
                     if (enemy != null) currentState = State.CHASE;
                     direction.x = Mathf.Sign(targetWaypoint.position.x - transform.position.x);
-
+                    Debug.DrawLine(transform.position, targetWaypoint.position, Color.yellow);
                     float dx = Mathf.Abs(targetWaypoint.position.x - transform.position.x );
                     if (dx <= 0.25f)
                     {
@@ -165,7 +165,7 @@ public class AIController2D : MonoBehaviour, IDamagable
             { 
                 // get the angle of the ground (angle between up vector and ground normal)
                 groundAngle = Vector2.SignedAngle(Vector2.up, raycastHit.normal); 
-                Debug.DrawRay(raycastHit.point, raycastHit.normal, Color.red); 
+                //Debug.DrawRay(raycastHit.point, raycastHit.normal, Color.red); 
             } 
         }
         return (collider != null); 
