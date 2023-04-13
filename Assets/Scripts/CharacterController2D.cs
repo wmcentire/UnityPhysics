@@ -56,6 +56,7 @@ public class CharacterController2D : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 animator.SetTrigger("Attack");
+                CheckAttack();
             }
         }
         // adjust gravity for jump
