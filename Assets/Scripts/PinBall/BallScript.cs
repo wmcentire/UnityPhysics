@@ -8,6 +8,7 @@ public class BallScript : MonoBehaviour
     [SerializeField] bool isInPlay = false;
     [SerializeField] bool devMode = false;
     [SerializeField] float launchMultiplier = 2;
+    [SerializeField] Transform startPosition;
 
     private void Update()
     {
@@ -16,6 +17,11 @@ public class BallScript : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 Launch(500 * launchMultiplier);
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                transform.position = startPosition.position;
+                rb.velocity = Vector2.zero;
             }
         }
         switch (isInPlay)
