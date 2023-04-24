@@ -5,7 +5,10 @@ using UnityEngine;
 public class PinBall : MonoBehaviour
 {
     [SerializeField] Canvas UI;
+    [SerializeField] Transform ballStart;
+    [SerializeField] GameObject prefab;
 
+    float timer = 0;
     game_state state;
     enum game_state
     {
@@ -14,10 +17,17 @@ public class PinBall : MonoBehaviour
         LOSE,
         LAUNCH
     }
-
+    
     public void setToStart()
     {
+        timer = 2;
         state = game_state.START;
+        SpawnBall();
+    }
+
+    public void SpawnBall()
+    {
+        Instantiate(prefab, ballStart);
     }
 
     private void Update()
@@ -25,11 +35,10 @@ public class PinBall : MonoBehaviour
         switch(state)
         {
             case game_state.START:
-
+                
                 break;
             case game_state.TITLE:
-                UI.enabled= true;
-                
+                UI.enabled = true;
                 break;
             case game_state.LOSE:
 

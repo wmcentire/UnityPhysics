@@ -10,6 +10,10 @@ public class BallScript : MonoBehaviour
     [SerializeField] float launchMultiplier = 2;
     [SerializeField] Transform startPosition;
 
+    private void Start()
+    {
+        Launch(700 * launchMultiplier);
+    }
     private void Update()
     {
         if(devMode)
@@ -23,15 +27,6 @@ public class BallScript : MonoBehaviour
                 transform.position = startPosition.position;
                 rb.velocity = Vector2.zero;
             }
-        }
-        switch (isInPlay)
-        {
-            case true:
-
-                break;
-            case false:
-
-                break;
         }
     }
 
