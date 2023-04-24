@@ -7,6 +7,7 @@ public class PinBall : MonoBehaviour
     [SerializeField] Canvas UI;
     [SerializeField] Transform ballStart;
     [SerializeField] GameObject prefab;
+    [SerializeField] bool devMode = false;
 
     float timer = 0;
     game_state state;
@@ -17,17 +18,29 @@ public class PinBall : MonoBehaviour
         LOSE,
         LAUNCH
     }
-    
+    private void Start()
+    {
+        state = game_state.TITLE;
+    }
+
     public void setToStart()
     {
-        timer = 2;
-        state = game_state.START;
-        SpawnBall();
+        if(state == game_state.START)
+        {
+
+        }
+        else
+        {
+            timer = 2;
+            state = game_state.START;
+            UI.enabled = false;
+            SpawnBall();
+        }
     }
 
     public void SpawnBall()
     {
-        Instantiate(prefab, ballStart);
+        Instantiate(prefab, ballStart.position, ballStart.rotation);
     }
 
     private void Update()
@@ -39,6 +52,10 @@ public class PinBall : MonoBehaviour
                 break;
             case game_state.TITLE:
                 UI.enabled = true;
+                if (devMode && Input.GetKeyDown(KeyCode.S))
+                {
+                    SpawnBall();
+                }
                 break;
             case game_state.LOSE:
 
