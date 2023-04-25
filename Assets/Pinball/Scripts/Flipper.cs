@@ -19,7 +19,7 @@ public class Flipper : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            body.AddTorque(10000, ForceMode2D.Force);
+            body.AddTorque(flipForce, ForceMode2D.Force);
         }
     }
 }
