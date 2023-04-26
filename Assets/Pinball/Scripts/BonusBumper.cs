@@ -39,8 +39,8 @@ public class BonusBumper : MonoBehaviour
     {
         if (lit)
         {
-            //circle1.GetComponent<SpriteRenderer>().material.color = litColor;
-            //circle2.GetComponent<SpriteRenderer>().material.color = litColor;
+            circle1.GetComponent<SpriteRenderer>().material.color = litColor;
+            circle2.GetComponent<SpriteRenderer>().material.color = litColor;
             hitbox.enabled = true;
         }
         else
@@ -51,8 +51,8 @@ public class BonusBumper : MonoBehaviour
                 setLit();
             }
             hitbox.enabled = false;
-            //circle1.GetComponent<SpriteRenderer>().material.color = unlitColor;
-            //circle2.GetComponent<SpriteRenderer>().material.color = unlitColor;
+            circle1.GetComponent<SpriteRenderer>().material.color = unlitColor;
+            circle2.GetComponent<SpriteRenderer>().material.color = unlitColor;
         }
     }
 }

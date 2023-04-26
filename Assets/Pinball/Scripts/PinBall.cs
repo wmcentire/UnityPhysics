@@ -9,6 +9,7 @@ public class PinBall : MonoBehaviour
 {
     [SerializeField] Canvas UI;
     [SerializeField] Canvas StartScreenUI;
+    [SerializeField] Button startButton;
     [SerializeField] TextMeshProUGUI scoreboard;
     [SerializeField] Transform ballStart;
     [SerializeField] GameObject prefab;
@@ -50,7 +51,7 @@ public class PinBall : MonoBehaviour
         {
             Debug.Log("yes");
             state = game_state.START;
-            StartScreenUI.enabled = false;
+            StartScreenUI.gameObject.SetActive(false);
             SpawnBall();
         }
     }
@@ -77,7 +78,8 @@ public class PinBall : MonoBehaviour
                 }
                 break;
             case game_state.TITLE:
-                StartScreenUI.enabled = true;
+                StartScreenUI.gameObject.SetActive(true);
+                startButton.onClick.AddListener(setToStart);
                 if (devMode && Input.GetKeyDown(KeyCode.S))
                 {
                     SpawnBall();
