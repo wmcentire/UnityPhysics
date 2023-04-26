@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 799e86d5d64c3764787b11014750caab, type: 3}
   m_Color: {r: 0.37421376, g: 1, b: 0.8909056, a: 1}
   m_FlipX: 0
@@ -99,7 +99,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4662512956200329372}
   isInPlay: 0
-  devMode: 1
-  launchMultiplier: 6
+  devMode: 0
+  launchMultiplier: 3
   startPosition: {fileID: 0}
 --- !u!58 &4662512956200329440
 CircleCollider2D:
@@ -134,7 +134,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4662512956200329373}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 883cd4a0d5aa6f04a85bf0cc3a6d0466, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

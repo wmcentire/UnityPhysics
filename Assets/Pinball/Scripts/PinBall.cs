@@ -1,13 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PinBall : MonoBehaviour
 {
     [SerializeField] Canvas UI;
+    [SerializeField] Canvas StartScreenUI;
+    [SerializeField] TextMeshProUGUI scoreboard;
     [SerializeField] Transform ballStart;
     [SerializeField] GameObject prefab;
     [SerializeField] bool devMode = false;
+
+    private int score = 0;
 
     float timer = 0;
     game_state state;
@@ -23,19 +30,34 @@ public class PinBall : MonoBehaviour
         state = game_state.TITLE;
     }
 
+    public void setScore(int score)
+    {
+        this.score += score;
+    }
+
+    public void resetScore()
+    {
+        this.score = 0;
+    }
+
     public void setToStart()
     {
         if(state == game_state.START)
         {
-
+            Debug.Log("no");
         }
         else
         {
-            timer = 2;
+            Debug.Log("yes");
             state = game_state.START;
-            UI.enabled = false;
+            StartScreenUI.enabled = false;
             SpawnBall();
         }
+    }
+
+    public void setToTitle()
+    {
+        state = game_state.TITLE;
     }
 
     public void SpawnBall()
@@ -45,13 +67,17 @@ public class PinBall : MonoBehaviour
 
     private void Update()
     {
+        scoreboard.text = "Score " + score.ToString();
         switch(state)
         {
             case game_state.START:
-                
+                if (devMode && Input.GetKeyDown(KeyCode.S))
+                {
+                    SpawnBall();
+                }
                 break;
             case game_state.TITLE:
-                UI.enabled = true;
+                StartScreenUI.enabled = true;
                 if (devMode && Input.GetKeyDown(KeyCode.S))
                 {
                     SpawnBall();
