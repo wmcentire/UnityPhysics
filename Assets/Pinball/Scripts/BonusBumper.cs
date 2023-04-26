@@ -14,9 +14,10 @@ public class BonusBumper : MonoBehaviour
     [SerializeField] GameObject circle1;
     [SerializeField] GameObject circle2;
     [SerializeField] Collider2D hitbox;
+    [SerializeField] bool turnOff = true;
 
     /// <summary>
-    /// once it gets hit by an object with the stored tag, add points then change state
+    /// once it gets hit by an object with the stored tag, add points then change state if turnOff is true
     /// </summary>
     /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
@@ -24,7 +25,11 @@ public class BonusBumper : MonoBehaviour
         if(lit && collision.gameObject.tag == tag)
         {
             manager.setScore(bumpPoints);
-            setUnlit();
+            Debug.Log("bumped " + bumpPoints);
+            if(turnOff)
+            {
+                setUnlit();
+            }
         }
     }
     float timer = 0;
@@ -46,22 +51,25 @@ public class BonusBumper : MonoBehaviour
 
     private void Update()
     {
-        if (lit)
+        if (turnOff)
         {
-            circle1.GetComponent<SpriteRenderer>().material.color = litColor;
-            circle2.GetComponent<SpriteRenderer>().material.color = litColor;
-            hitbox.enabled = true;
-        }
-        else
-        {
-            timer -= Time.deltaTime;
-            if(timer <= 0)
+            if (lit)
             {
-                setLit();
+                circle1.GetComponent<SpriteRenderer>().material.color = litColor;
+                circle2.GetComponent<SpriteRenderer>().material.color = litColor;
+                hitbox.enabled = true;
             }
-            hitbox.enabled = false;
-            circle1.GetComponent<SpriteRenderer>().material.color = unlitColor;
-            circle2.GetComponent<SpriteRenderer>().material.color = unlitColor;
+            else
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    setLit();
+                }
+                hitbox.enabled = false;
+                circle1.GetComponent<SpriteRenderer>().material.color = unlitColor;
+                circle2.GetComponent<SpriteRenderer>().material.color = unlitColor;
+            }
         }
     }
 }
