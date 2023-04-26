@@ -30,17 +30,24 @@ public class PinBall : MonoBehaviour
     {
         state = game_state.TITLE;
     }
-
+    /// <summary>
+    /// add points to score
+    /// </summary>
+    /// <param name="score"></param>
     public void setScore(int score)
     {
         this.score += score;
     }
-
+    /// <summary>
+    /// set score to zero
+    /// </summary>
     public void resetScore()
     {
         this.score = 0;
     }
-
+    /// <summary>
+    /// runs through the starting functions of the game
+    /// </summary>
     public void setToStart()
     {
         if(state == game_state.START)
@@ -60,7 +67,9 @@ public class PinBall : MonoBehaviour
     {
         state = game_state.TITLE;
     }
-
+    /// <summary>
+    /// spawns ball idk what else to say
+    /// </summary>
     public void SpawnBall()
     {
         Instantiate(prefab, ballStart.position, ballStart.rotation);
@@ -79,7 +88,10 @@ public class PinBall : MonoBehaviour
                 break;
             case game_state.TITLE:
                 StartScreenUI.gameObject.SetActive(true);
-                startButton.onClick.AddListener(setToStart);
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    setToStart();
+                }
                 if (devMode && Input.GetKeyDown(KeyCode.S))
                 {
                     SpawnBall();

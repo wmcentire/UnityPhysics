@@ -29,7 +29,10 @@ public class BallScript : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// takes in a float and uses it to add force to the rigidbody2d
+    /// </summary>
+    /// <param name="LP"></param>
     public void Launch(float LP) // Launch Power
     {
         rb.velocity = Vector2.zero;

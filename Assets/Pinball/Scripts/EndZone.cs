@@ -8,7 +8,10 @@ public class EndZone : MonoBehaviour
     [SerializeField] PinBall manager;
     
 
-
+    /// <summary>
+    /// if object collision has the stored tag, destroy
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == tag)

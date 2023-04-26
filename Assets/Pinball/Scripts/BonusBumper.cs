@@ -15,6 +15,10 @@ public class BonusBumper : MonoBehaviour
     [SerializeField] GameObject circle2;
     [SerializeField] Collider2D hitbox;
 
+    /// <summary>
+    /// once it gets hit by an object with the stored tag, add points then change state
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(lit && collision.gameObject.tag == tag)
@@ -24,11 +28,16 @@ public class BonusBumper : MonoBehaviour
         }
     }
     float timer = 0;
+    /// <summary>
+    /// set lit to true
+    /// </summary>
     public void setLit()
     {
         lit = true;
     }
-
+    /// <summary>
+    /// set lit to false and set a timer
+    /// </summary>
     public void setUnlit()
     {
         lit = false;
