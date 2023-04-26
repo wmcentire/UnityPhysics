@@ -9,6 +9,7 @@ public class BallScript : MonoBehaviour
     [SerializeField] bool devMode = false;
     [SerializeField] float launchMultiplier = 2;
     [SerializeField] Transform startPosition;
+    [SerializeField] float tiltMult = 1 ;
 
     private void Start()
     {
@@ -28,6 +29,19 @@ public class BallScript : MonoBehaviour
                 rb.velocity = Vector2.zero;
             }
         }
+
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    Vector2 addedForce = rb.velocity;
+        //    addedForce.x = rb.velocity.x -tiltMult;
+        //    rb.velocity = addedForce;
+        //}
+        //if(Input.GetKey(KeyCode.D))
+        //{
+        //    Vector2 addedForce = rb.velocity;
+        //    addedForce.x = rb.velocity.x + tiltMult;
+        //    rb.velocity = addedForce;
+        //}
     }
     /// <summary>
     /// takes in a float and uses it to add force to the rigidbody2d
