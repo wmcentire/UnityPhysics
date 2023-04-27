@@ -17,8 +17,7 @@ public class EndZone : MonoBehaviour
         if(collision.gameObject.tag == tag)
         {
             Destroy(collision.gameObject);
-            manager.setToTitle();
-            manager.resetScore();
+            manager.ballLost();
         }
     }
 }

@@ -11,11 +11,14 @@ public class PinBall : MonoBehaviour
     [SerializeField] Canvas StartScreenUI;
     [SerializeField] Button startButton;
     [SerializeField] TextMeshProUGUI scoreboard;
+    [SerializeField] TextMeshProUGUI ballcount;
+    [SerializeField] TextMeshProUGUI startButtonTxT;
     [SerializeField] Transform ballStart;
     [SerializeField] GameObject prefab;
     [SerializeField] bool devMode = false;
 
     private int score = 0;
+    private int ballCount = 3;
 
     float timer = 0;
     game_state state;
@@ -75,9 +78,25 @@ public class PinBall : MonoBehaviour
         Instantiate(prefab, ballStart.position, ballStart.rotation);
     }
 
+    public void ballLost()
+    {
+        ballCount--;
+        if(ballCount < 0)
+        {
+            resetScore();
+            setToTitle();
+        }
+        else
+        {
+            state = game_state.LAUNCH;
+            startButtonTxT.text = "Launch Ball!";
+        }
+    }
+
     private void Update()
     {
         scoreboard.text = "Score " + score.ToString();
+        ballcount.text = "Balls Left: " + ballCount.ToString();
         switch(state)
         {
             case game_state.START:
@@ -87,7 +106,9 @@ public class PinBall : MonoBehaviour
                 }
                 break;
             case game_state.TITLE:
+                ballCount = 3;
                 StartScreenUI.gameObject.SetActive(true);
+                startButtonTxT.text = "Start Game!";
                 if(Input.GetKeyDown(KeyCode.Space))
                 {
                     setToStart();
@@ -101,7 +122,12 @@ public class PinBall : MonoBehaviour
 
                 break;
             case game_state.LAUNCH:
-
+                Debug.Log("Launch state");
+                StartScreenUI.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    setToStart();
+                }
                 break;
         }
     }
