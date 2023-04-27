@@ -14,7 +14,6 @@ public class PointTrigger : MonoBehaviour
     float timer = 0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit");
         if(manager != null && collision.gameObject.tag == tag && active)
         {
             Debug.Log("points" + hitPoints);

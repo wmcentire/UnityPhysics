@@ -25,7 +25,6 @@ public class BonusBumper : MonoBehaviour
         if(lit && collision.gameObject.tag == tag)
         {
             manager.setScore(bumpPoints);
-            Debug.Log("bumped " + bumpPoints);
             if(turnOff)
             {
                 setUnlit();

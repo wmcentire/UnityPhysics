@@ -55,11 +55,10 @@ public class PinBall : MonoBehaviour
     {
         if(state == game_state.START)
         {
-            Debug.Log("no");
+
         }
         else
         {
-            Debug.Log("yes");
             state = game_state.START;
             StartScreenUI.gameObject.SetActive(false);
             SpawnBall();
@@ -122,7 +121,6 @@ public class PinBall : MonoBehaviour
 
                 break;
             case game_state.LAUNCH:
-                Debug.Log("Launch state");
                 StartScreenUI.gameObject.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
