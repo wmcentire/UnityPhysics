@@ -29,6 +29,7 @@ public class BonusBumper : MonoBehaviour
             {
                 setUnlit();
             }
+            if(TryGetComponent<AudioSource>(out AudioSource sound)) sound.Play();
         }
     }
     float timer = 0;

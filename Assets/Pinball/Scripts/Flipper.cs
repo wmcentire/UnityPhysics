@@ -20,6 +20,7 @@ public class Flipper : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             body.AddTorque(flipForce, ForceMode2D.Force);
+            GetComponent<AudioSource>().Play();
         }
     }
 }

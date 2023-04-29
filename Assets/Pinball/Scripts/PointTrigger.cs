@@ -23,6 +23,7 @@ public class PointTrigger : MonoBehaviour
                 active= false;
                 timer = waitTime;
             }
+            if(TryGetComponent<AudioSource>(out AudioSource sound)) sound.Play();
         }
     }
 

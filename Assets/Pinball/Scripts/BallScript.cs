@@ -10,11 +10,23 @@ public class BallScript : MonoBehaviour
     [SerializeField] float launchMultiplier = 2;
     [SerializeField] Transform startPosition;
     [SerializeField] float tiltMult = 1 ;
+    [SerializeField] string tag1 = "Sound";
+    [SerializeField] string tag2 = "bmpSmall";
+    [SerializeField] GameObject[] sounds = new GameObject[0];
 
     private void Start()
     {
         Launch(700 * launchMultiplier);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == tag1)
+        {
+            sounds[0].GetComponent<AudioSource>().Play();
+        }
+    }
+
     private void Update()
     {
         if(devMode)

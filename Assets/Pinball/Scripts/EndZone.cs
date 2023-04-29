@@ -17,6 +17,7 @@ public class EndZone : MonoBehaviour
         if(collision.gameObject.tag == tag)
         {
             Destroy(collision.gameObject);
+            GetComponent<AudioSource>().Play();
             manager.ballLost();
         }
     }
